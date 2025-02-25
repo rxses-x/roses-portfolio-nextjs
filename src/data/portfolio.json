@@ -1,4 +1,5 @@
 {
     "name": "Roses",
-    "description": "Web Developer based in France, passionate about creating elegant and performant web applications. Specializing in modern frontend technologies and responsive design."
+    "description": "Web Developer based in France, passionate about creating elegant and performant web applications. Specializing in modern frontend technologies and responsive design.",
+    "showCursor": true
 }
