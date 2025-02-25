@@ -5,10 +5,15 @@ import Cursor from '../components/Cursor';
 import data from '../data/portfolio.json';
 import { useRef } from 'react';
 import GradientCircles from '../components/GradientCircles';
+import Header from '@/components/Header';
 
 function Home() {
     const aboutRef = useRef();
     const workRef = useRef();
+
+    const handleScroll = (section) => {
+        console.log('Clicked on', section);
+    };
 
     return (
         <div className={`relative ${data.showCursor && 'cursor-none'}`}>
@@ -18,6 +23,7 @@ function Home() {
                 <meta name="description" content={data.description} />
             </Head>
             <GradientCircles />
+            <Header handleScroll={handleScroll} />
         </div>
     )
 }
