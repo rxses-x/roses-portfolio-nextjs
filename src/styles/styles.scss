@@ -1,0 +1,14 @@
+@use '../components/GradientCircles/index';
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* {
+    font-family: "Hind";
+}
+
+body {
+    @apply dark:bg-black dark:text-white;
+
+}
