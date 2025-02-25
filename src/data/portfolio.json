@@ -3,5 +3,8 @@
     "description": "Web Developer based in France, passionate about creating elegant and performant web applications. Specializing in modern frontend technologies and responsive design.",
     "showCursor": true,
     "darkMode": true,
-    "showResume": false
+    "showResume": false,
+    "headerTagsLine": [
+        "I'm CADET Sébastien aka (Roses)","designer & developer","based in France."
+    ]
 }
