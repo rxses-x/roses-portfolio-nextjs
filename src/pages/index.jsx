@@ -1,17 +1,19 @@
+"use client";
 import dynamic from 'next/dynamic'
 import Head from 'next/head';
+import Cursor from '../components/Cursor';
 import data from '../data/portfolio.json';
 import { useRef } from 'react';
-
 function Home() {
     const aboutRef = useRef();
     const workRef = useRef();
 
     return (
-        <div className="relative cursor-none">
+        <div className={`relative ${data.showCursor && 'cursor-none'}`}>
+            {data.showCursor && <Cursor />}
             <Head>
-                <title>{`${data.name} Portfolio`}</title>
-                <meta name="description" content={ data.description } />
+                <title>{data.name}</title>
+                <meta name="description" content={data.description} />
             </Head>
         </div>
     )
