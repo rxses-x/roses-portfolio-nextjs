@@ -1,4 +1,5 @@
-@use '../components/GradientCircles/index';
+@use '../components/GradientCircles/index' as gradient;
+@use '../components/Cursor/index' as cursor;
 
 @use 'tailwindcss/base';
 @use 'tailwindcss/components';
@@ -11,5 +12,15 @@
 
 body {
     @apply dark:bg-black dark:text-white;
-
+    cursor: none;
 }
+
+input, button, textarea, select, a, [role="button"] {
+    cursor: none;
+}
+
+/* Ensure cursor stays hidden even when switching tabs */
+*:not(.cursor.custom-cursor) {
+    cursor: none !important;
+}
+
