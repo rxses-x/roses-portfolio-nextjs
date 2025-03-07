@@ -1,64 +1,158 @@
 {
-    "name": "Roses",
-    "description": "Web Developer based in France, passionate about creating elegant and performant web applications. Specializing in modern frontend technologies and responsive design.",
-    "showCursor": true,
-    "darkMode": true,
-    "showResume": false,
-    "headerTagsLine": [
-        "I'm CADET Sébastien aka (Roses)","designer & developer","based in France."
-    ],
-    "socials": [
-        {
-            "name": "LinkedIn",
-            "url": "https://www.linkedin.com/in/sebastien-cadet-7b2770190/"
-        },
-        {
-            "name": "GitHub",
-            "url": "https://github.com/sebastien-cadet"
-        }   
-    ],
-    "projects": [
+  "name": "Roses",
+  "description": "Web Developer based in France, passionate about creating elegant and performant web applications. Specializing in modern frontend technologies and responsive design.",
+  "showCursor": true,
+  "darkMode": true,
+  "showResume": true,
+  "headerTagsLine": [
+    "I'm CADET Sébastien aka (Roses)",
+    "designer & developer",
+    "based in France."
+  ],
+  "socials": [
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/sebastien-cadet-7b2770190/"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/sebastien-cadet"
+    }
+  ],
+  "projects": [
     {
       "id": "1",
       "title": "Kasa",
       "description": "Web Development",
       "imageSrc": "/images/work/kasa.png",
-      "url": "https://github.com/rxses-x/kasa/"
+      "url": "https://rxses-x.github.io/kasa/"
     },
     {
       "id": "2",
       "title": "Project Two",
       "description": "Web Development",
       "imageSrc": "https://images.unsplash.com/photo-1605153864431-a2795a1b2f95?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwyNTY3ODl8fGVufDB8fHw%3D&auto=format&fit=crop&w=400&q=60",
-      "url": "http://chetanverma.com/"
+      "url": "https://rxses-x.github.io/"
     },
     {
       "id": "3",
       "title": "Project Three",
       "description": "Design",
       "imageSrc": "https://images.unsplash.com/photo-1504083898675-c896ecdae86e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjJ8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
-      "url": "http://chetanverma.com/"
+      "url": "https://rxses-x.github.io/"
     },
     {
       "id": "4",
       "title": "Project Four",
       "description": "Marketing",
       "imageSrc": "https://images.unsplash.com/photo-1492171983775-a51717616c0d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NjB8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
-      "url": "http://chetanverma.com/"
+      "url": "https://rxses-x.github.io/"
     },
     {
       "id": "5",
       "title": "Project Five",
       "description": "Development",
       "imageSrc": "https://images.unsplash.com/photo-1534239143101-1b1c627395c5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzZ8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
-      "url": "http://chetanverma.com/"
+      "url": "https://rxses-x.github.io/"
     },
     {
       "id": "6",
       "title": "Project Six",
       "description": "Design & Development",
       "imageSrc": "https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTAyfHxwYXN0ZWx8ZW58MHx8MHw%3D&auto=format&fit=crop&w=400&q=60",
-      "url": "http://chetanverma.com/"
+      "url": "https://rxses-x.github.io/"
     }
-  ]
+  ],
+  "about": "I'm CADET Sébastien aka (Roses), a web developer based in France. I'm about to graduate with a BAC+2 equivalent degree in web development from OpenClassrooms, where I've honed my skills in creating elegant and performant web applications. I'm passionate about leveraging modern frontend technologies and responsive design to build engaging digital experiences.",
+  "experience": [
+    {
+      "title": "Web Integrator Student",
+      "company": "OpenClassrooms",
+      "period": "2024 - 2025",
+      "type": "Full Time",
+      "achievements": [
+        "Built responsive websites from scratch using HTML5 and CSS3, focusing on modern design principles",
+        "Enhanced web applications with vanilla JavaScript for interactive user experiences",
+        "Optimized website performance and implemented SEO best practices for improved visibility",
+        "Developed a dynamic React application following component-based architecture",
+        "Created a restaurant menu planning application using modern web technologies",
+        "Designed and developed a personal portfolio website using Next.js and TailwindCSS"
+      ]
+    }
+  ],
+  "education": {
+    "university": "OpenClassrooms",
+    "url": "https://openclassrooms.com/",
+    "degree": "Web Integrator - Diplôme niveau 5 (BAC+2)",
+    "period": "2024-2025",
+    "description": "Professional certification in web development focusing on React and modern web technologies. 603 hours of supervised training including hands-on projects and professional development practices."
+  },
+  "skills": {
+    "languages": [
+      {
+        "name": "JavaScript",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+      },
+      {
+        "name": "HTML5",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+      },
+      {
+        "name": "CSS3",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+      },
+      {
+        "name": "TypeScript",
+        "url": "https://www.typescriptlang.org/"
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "React",
+        "url": "https://react.dev/"
+      },
+      {
+        "name": "Next.js",
+        "url": "https://nextjs.org/"
+      },
+      {
+        "name": "Node.js",
+        "url": "https://nodejs.org/"
+      },
+      {
+        "name": "TailwindCSS",
+        "url": "https://tailwindcss.com/"
+      },
+      {
+        "name": "Bootstrap",
+        "url": "https://getbootstrap.com/"
+      }
+    ],
+    "tools": [
+      {
+        "name": "Git",
+        "url": "https://git-scm.com/"
+      },
+      {
+        "name": "VS Code",
+        "url": "https://code.visualstudio.com/"
+      },
+      {
+        "name": "Cursor",
+        "url": "https://cursor.sh/"
+      },
+      {
+        "name": "Chrome DevTools",
+        "url": "https://developer.chrome.com/docs/devtools/"
+      },
+      {
+        "name": "Figma",
+        "url": "https://www.figma.com/"
+      },
+      {
+        "name": "npm",
+        "url": "https://www.npmjs.com/"
+      }
+    ]
+  }
 }

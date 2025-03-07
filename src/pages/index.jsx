@@ -8,7 +8,9 @@ import Header from '@/components/Header';
 import TagLinesSection from '@/components/TagLinesSection';
 import Socials from '@/components/Socials';
 import Works from '@/components/Works';
+import About from '@/components/About';
 import Footer from '@/components/Footer';
+
 function Home() {
     const aboutRef = useRef();
     const workRef = useRef();
@@ -55,7 +57,10 @@ function Home() {
                     data={data}
                     ref={workRef}
                 />
-                
+                <About
+                    ref={aboutRef}
+                    data={data}
+                />
                 <Footer
                     ref={contactRef}
                     data={data}
