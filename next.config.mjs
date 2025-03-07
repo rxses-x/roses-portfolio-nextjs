@@ -5,8 +5,9 @@ const nextConfig = {
     domains: ['images.unsplash.com'],
     unoptimized: true,
   },
-  basePath: '/roses-portfolio-nextjs',
-  assetPrefix: '/roses-portfolio-nextjs/',
+  basePath: process.env.NODE_ENV === 'production' ? '/roses-portfolio-nextjs' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/roses-portfolio-nextjs/' : '',
+  trailingSlash: true,
 };
 
 export default nextConfig;
