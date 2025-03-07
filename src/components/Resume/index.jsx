@@ -3,6 +3,7 @@ import { useTheme } from 'next-themes';
 
 const Resume = ({ data }) => {
   const { theme } = useTheme();
+  console.log(theme);
   const isDark = theme === 'dark';
 
   const containerVariants = {
@@ -33,10 +34,10 @@ const Resume = ({ data }) => {
       target="_blank"
       rel="noopener noreferrer"
       variants={itemVariants}
-      className={`px-3 py-1 rounded-full text-sm transition-all duration-300 hover:scale-105 cursor-pointer ${
+      className={`px-3 py-1 rounded-full text-sm transition-all duration-300 hover:scale-105 ${ data.showCursor && 'cursor-none' } ${
         isDark 
-          ? 'bg-[#1a1a1a] text-gray-400 hover:bg-[#252525] hover:text-gray-300' 
-          : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800'
+          ? 'bg-[#1a1a1a] text-gray-300 hover:bg-[#252525] hover:text-white' 
+          : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900'
       }`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -53,7 +54,7 @@ const Resume = ({ data }) => {
           initial="hidden"
           whileInView="visible"
           viewport={{ margin: "-100px" }}
-          className="space-y-12"
+          className={`space-y-12 ${isDark ? 'text-white' : 'text-gray-900'}`}
         >
           {/* Header */}
           <motion.div variants={itemVariants}>
@@ -74,7 +75,7 @@ const Resume = ({ data }) => {
                   variants={itemVariants}
                   className={`rounded-xl p-6 ${
                     isDark 
-                      ? 'bg-gradient-to-b from-[#141414] to-black shadow-xl' 
+                      ? 'bg-[#1a1a1a] shadow-xl border border-gray-800' 
                       : 'bg-white shadow-lg border border-gray-100'
                   }`}
                 >
@@ -83,24 +84,24 @@ const Resume = ({ data }) => {
                       <h4 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
                         {exp.title}
                       </h4>
-                      <p className={isDark ? 'text-gray-500' : 'text-gray-600'}>
+                      <p className={isDark ? 'text-gray-300' : 'text-gray-600'}>
                         {exp.company}
                       </p>
                     </div>
                     <div className="mt-2 sm:mt-0 flex items-center gap-2">
-                      <span className={isDark ? 'text-gray-500' : 'text-gray-600'}>
+                      <span className={isDark ? 'text-gray-300' : 'text-gray-600'}>
                         {exp.period}
                       </span>
                       <span className={`text-xs px-2 py-1 rounded-full ${
                         isDark 
-                          ? 'bg-[#1a1a1a] text-gray-400' 
-                          : 'bg-gray-100 text-gray-600'
+                          ? 'bg-[#1a1a1a] text-gray-300' 
+                          : 'bg-gray-100 text-gray-700'
                       }`}>
                         {exp.type}
                       </span>
                     </div>
                   </div>
-                  <ul className={`list-disc list-inside space-y-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                  <ul className={`list-disc list-inside space-y-2 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                     {exp.achievements.map((achievement, i) => (
                       <li key={i}>{achievement}</li>
                     ))}
@@ -117,7 +118,7 @@ const Resume = ({ data }) => {
             </h3>
             <div className={`rounded-xl p-6 ${
               isDark 
-                ? 'bg-gradient-to-b from-[#141414] to-black shadow-xl' 
+                ? 'bg-[#1a1a1a] shadow-xl border border-gray-800' 
                 : 'bg-white shadow-lg border border-gray-100'
             }`}>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
@@ -126,7 +127,7 @@ const Resume = ({ data }) => {
                     href={data.education.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-block text-lg font-semibold mb-1 transition-all duration-300 hover:scale-105 ${
+                    className={`inline-block text-lg font-semibold mb-1 transition-all duration-300 hover:scale-105 underline underline-offset-1 ${
                       isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-700'
                     }`}
                     whileHover={{ scale: 1.05 }}
@@ -134,15 +135,15 @@ const Resume = ({ data }) => {
                   >
                     {data.education.university}
                   </motion.a>
-                  <p className={isDark ? 'text-gray-500' : 'text-gray-600'}>
+                  <p className={isDark ? 'text-gray-300' : 'text-gray-600'}>
                     {data.education.degree}
                   </p>
                 </div>
-                <span className={isDark ? 'text-gray-500' : 'text-gray-600'}>
+                <span className={isDark ? 'text-gray-300' : 'text-gray-600'}>
                   {data.education.period}
                 </span>
               </div>
-              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>
+              <p className={isDark ? 'text-gray-300' : 'text-gray-600'}>
                 {data.education.description}
               </p>
             </div>
@@ -159,7 +160,7 @@ const Resume = ({ data }) => {
                 variants={itemVariants}
                 className={`rounded-xl p-6 ${
                   isDark 
-                    ? 'bg-gradient-to-b from-[#141414] to-black shadow-xl' 
+                    ? 'bg-[#1a1a1a] shadow-xl border border-gray-800' 
                     : 'bg-white shadow-lg border border-gray-100'
                 }`}
               >
@@ -178,7 +179,7 @@ const Resume = ({ data }) => {
                 variants={itemVariants}
                 className={`rounded-xl p-6 ${
                   isDark 
-                    ? 'bg-gradient-to-b from-[#141414] to-black shadow-xl' 
+                    ? 'bg-[#1a1a1a] shadow-xl border border-gray-800' 
                     : 'bg-white shadow-lg border border-gray-100'
                 }`}
               >
@@ -197,7 +198,7 @@ const Resume = ({ data }) => {
                 variants={itemVariants}
                 className={`rounded-xl p-6 ${
                   isDark 
-                    ? 'bg-gradient-to-b from-[#141414] to-black shadow-xl' 
+                    ? 'bg-[#1a1a1a] shadow-xl border border-gray-800' 
                     : 'bg-white shadow-lg border border-gray-100'
                 }`}
               >

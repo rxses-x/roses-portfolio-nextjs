@@ -63,7 +63,7 @@ const Header = ({ handleScroll }) => {
                                 <PopoverPanel
                                     className={`flex z-10 w-full p-4 ${theme === 'dark' ? 'bg-slate-800' : 'bg-white'} shadow-md rounded-md transition-all duration-300 ease-out`}>
                                     <div className="grid grid-cols-1 gap-4">
-                                        {['Work', 'About', showResume && 'Resume', 'Contact'].map((label, index) => (
+                                        {['Work', 'About', 'Contact'].map((label, index) => (
                                             label && (
                                                 <Button
                                                     key={index}
@@ -88,7 +88,7 @@ const Header = ({ handleScroll }) => {
                             {name}
                         </h1>
                         <div className="flex">
-                            {['Work', 'About', showResume && 'Resume', 'Contact'].map((label, index) => (
+                            {['Work', 'About', 'Contact'].map((label, index) => (
                                 label && (
                                     <Button
                                         key={index}

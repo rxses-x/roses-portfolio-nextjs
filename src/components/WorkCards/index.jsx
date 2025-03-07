@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useTheme } from 'next-themes';
 
 const WorkCard = ({ img, name, description, onClick }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const { theme } = useTheme();
+    const isDark = theme === 'dark';
+
     return (
         <div
-            className="overflow-hidden rounded-lg laptop:p-4 first:ml-0 link"
+            className={`overflow-hidden rounded-lg laptop:p-4 first:ml-0 link ${
+                isDark ? 'hover:bg-[#1a1a1a]' : 'hover:bg-gray-50'
+            } transition-all duration-300`}
             onClick={onClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -21,10 +27,10 @@ const WorkCard = ({ img, name, description, onClick }) => {
                     objectFit="cover"
                 ></Image>
             </div>
-            <h2 className="mt-5 text-3xl font-medium">
+            <h2 className={`mt-5 text-3xl font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 {name ? name : "Project Name"}
             </h2>
-            <h2 className="text-xl opacity-50">
+            <h2 className={`text-xl ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                 {description ? description : "Description"}
             </h2>
         </div>
