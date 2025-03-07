@@ -1,7 +1,6 @@
 import gsap, { Power3 } from "gsap";
 
 const Animation = ({ target, from, to }) => {
-    console.log('target', target, from, to);
     return gsap.fromTo(target, {
         opacity: 0, ...from
     }, {
