@@ -7,7 +7,7 @@ import GradientCircles from '@/components/GradientCircles';
 import Header from '@/components/Header';
 import TagLinesSection from '@/components/TagLinesSection';
 import Socials from '@/components/Socials';
-import WorkCards from '@/components/WorkCards';
+import Works from '@/components/Works';
 import Footer from '@/components/Footer';
 function Home() {
     const aboutRef = useRef();
@@ -51,21 +51,11 @@ function Home() {
                     className="mt-5 laptop:mt-5"
                     data={data.socials}
                 />
-                <div className="mt-10 laptop:mt-30" ref={workRef}>
-                    <h1 className="text-2xl text-bold">Work.</h1>
-
-                   <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
-                        {data.projects.map((project) => (
-                            <WorkCards
-                                key={project.id}
-                                img={project.imageSrc}
-                                name={project.title}
-                                description={project.description}
-                                onClick={() => window.open(project.url)}
-                            />
-                        ))}
-                    </div>
-                </div>
+                <Works
+                    data={data}
+                    ref={workRef}
+                />
+                
                 <Footer
                     ref={contactRef}
                     data={data}
