@@ -15,7 +15,11 @@ export default {
       'desktop': '1280px',
       'laptopl': '1440px',
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(circle, rgb(99, 54, 91) 0%, rgba(17, 17, 76, 0.8) 100%)',
+      }
+    },
   },
   plugins: [],
 };

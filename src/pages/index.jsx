@@ -8,7 +8,7 @@ import Header from '@/components/Header';
 import TagLinesSection from '@/components/TagLinesSection';
 import Socials from '@/components/Socials';
 import WorkCards from '@/components/WorkCards';
-
+import Footer from '@/components/Footer';
 function Home() {
     const aboutRef = useRef();
     const workRef = useRef();
@@ -66,6 +66,10 @@ function Home() {
                         ))}
                     </div>
                 </div>
+                <Footer
+                    ref={contactRef}
+                    data={data}
+                />
             </div>
         </div>
     )
