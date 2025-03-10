@@ -43,7 +43,9 @@ function Home() {
             <GradientCircles />
             <div className='container mx-auto mb-10 px-4 mob:px-6 tablet:px-8 laptop:px-10 laptopl:px-12'>
                 <Header
-                    handleScroll={handleScroll} />
+                    handleScroll={handleScroll}
+                    data={ data }
+                />
                 <div className='laptop:mt-20 mt-10'>
                     <TagLinesSection
                         data={data.headerTagsLine}

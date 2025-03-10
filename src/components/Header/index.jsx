@@ -4,15 +4,14 @@ import React, { useEffect, useState } from "react";
 import Button from "../Button";
 import { useTheme } from 'next-themes';
 import { useRouter } from 'next/router';
-// Local Data
-import data from '../../data/portfolio.json';
 
-const Header = ({ handleScroll }) => {
+const Header = ({ handleScroll, data }) => {
     const router = useRouter();
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
+    const isDark = theme === 'dark'
 
-    const { name, showResume } = data;
+    if (!data) return;
 
     useEffect(() => {
         setMounted(true);
@@ -22,7 +21,7 @@ const Header = ({ handleScroll }) => {
         <>
             {mounted && (
                 <>
-                    <Popover className="block tablet:hidden mt-5 p-2">
+                    <Popover className="block tablet:hidden mt-5 p-2 transition-all duration-300 ease-out">
                         {({ open }) => (
                             <>
                                 <div className="flex items-center justify-between">
@@ -30,19 +29,19 @@ const Header = ({ handleScroll }) => {
                                         onClick={() => router.push("/")}
                                         className="font-medium cursor-none link"
                                     >
-                                        {name}
+                                        {data.name}
                                     </h1>
 
                                     <div className="flex items-center">
                                         {data.darkMode && (
                                             <Button
                                                 onClick={() =>
-                                                    setTheme(theme === "dark" ? "light" : "dark")
+                                                    setTheme(isDark ? "light" : "dark")
                                                 }
                                             >
                                                 <img
                                                     className="h-6"
-                                                    src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                                                    src={`/images/${isDark ? "moon.svg" : "sun.svg"}`}
                                                 />
                                             </Button>
                                         )}
@@ -50,7 +49,7 @@ const Header = ({ handleScroll }) => {
                                             <img
                                                 className="h-5"
                                                 src={`/images/${!open
-                                                    ? theme === "dark"
+                                                    ? isDark
                                                         ? "menu-white.svg"
                                                         : "menu.svg"
                                                     : theme === "light"
@@ -61,7 +60,7 @@ const Header = ({ handleScroll }) => {
                                     </div>
                                 </div>
                                 <PopoverPanel
-                                    className={`flex z-10 w-full p-4 ${theme === 'dark' ? 'bg-slate-800' : 'bg-white'} shadow-md rounded-md transition-all duration-300 ease-out`}>
+                                    className={`flex z-10 w-full p-4 ${theme === 'dark' ? 'bg-[#1a1a1a]' : 'bg-white'} shadow-md rounded-md transition-all duration-300 ease-out`}>
                                     <div className="grid grid-cols-1 gap-4">
                                         {['Work', 'About', 'Contact'].map((label, index) => (
                                             label && (
@@ -101,12 +100,12 @@ const Header = ({ handleScroll }) => {
                             {mounted && theme && data.darkMode && (
                                 <Button
                                     onClick={() =>
-                                        setTheme(theme === "dark" ? "light" : "dark")
+                                        setTheme(isDark ? "light" : "dark")
                                     }
                                 >
                                     <img
                                         className="h-6"
-                                        src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                                        src={`/images/${isDark ? "moon.svg" : "sun.svg"}`}
                                     />
                                 </Button>
                             )}
