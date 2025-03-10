@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
 const WorkCard = ({ img, name, description, onClick }) => {
-    const [isHovered, setIsHovered] = useState(false);
     const { theme } = useTheme();
     const isDark = theme === 'dark';
 
@@ -13,8 +12,6 @@ const WorkCard = ({ img, name, description, onClick }) => {
                 isDark ? 'hover:bg-[#1a1a1a]' : 'hover:bg-gray-50'
             } transition-all duration-300`}
             onClick={onClick}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
         >
             <div
                 className="relative rounded-lg overflow-hidden transition-all ease-out duration-300 h-48 mob:h-48 tablet:h-[300px] laptop:h-[600px]"
