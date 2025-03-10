@@ -1,4 +1,3 @@
-import React from "react";
 import { useTheme } from "next-themes";
 import data from "../../data/portfolio.json";
 
@@ -35,7 +34,7 @@ const Button = ({ children, type, onClick, classes }) => {
     >
       {children}
     </button>
-  );
+    );
 };
 
 export default Button;
