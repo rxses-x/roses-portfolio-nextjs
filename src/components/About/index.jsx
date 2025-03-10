@@ -5,7 +5,7 @@ const About = forwardRef(({ className, data }, ref) => {
     return (
         <section ref={ref} className={className}>
             <div className="mb-20">
-                <h2 className="text-2xl font-bold">About.</h2>
+                <h2 className="text-2xl text-bold">About.</h2>
                 <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
                     {data.about}
                 </p>
