@@ -5,14 +5,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import dataPortfolio from '@/data/portfolio.json';
+import emailjs from '@emailjs/browser';
 
 const Footer = ({ data }) => {
     data = data && data.length > 0 ? data : dataPortfolio;
+    const { theme } = useTheme();
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [isEmailValid, setIsEmailValid] = useState(false);
+    const [loading, setLoading] = useState(false);
     const textareaRef = useRef(null);
-    const { theme } = useTheme();
+    const formRef = useRef(null);
+    const isDark = theme === 'dark'
 
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -30,18 +34,34 @@ const Footer = ({ data }) => {
         }
     }, [message]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission here
-        console.log('Email submitted:', email);
-        console.log('Message:', message);
+    const handleReset = () => {
         setEmail('');
         setMessage('');
     };
 
-    const handleReset = () => {
-        setEmail('');
-        setMessage('');
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!isEmailValid || !message) return;
+
+        setLoading(true);
+        try {
+            if (!formRef.current) return;
+
+            await emailjs.sendForm(
+                'service_qb2io0d', // Replace with your EmailJS service ID
+                'template_pyou358', // Replace with your EmailJS template ID
+                formRef.current,
+                'thD0X2R84C1ur4HXa' // Replace with your EmailJS public key
+            );
+
+            handleReset();
+            alert('Message sent successfully!');
+        } catch (error) {
+            console.error('Error sending message:', error);
+            alert('Failed to send message. Please try again.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -56,10 +76,11 @@ const Footer = ({ data }) => {
                         <h1 className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl text-bold">
                             TOGETHER
                         </h1>
-                        <form className="mt-8 flex flex-col gap-4 items-start">
+                        <form ref={formRef} className="mt-8 flex flex-col gap-4 items-start">
                             <div className="w-full tablet:w-96">
                                 <input
                                     type="email"
+                                    name="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="Enter your email"
@@ -71,6 +92,7 @@ const Footer = ({ data }) => {
                                 )}
                                 <textarea
                                     ref={textareaRef}
+                                    name="message"
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
                                     placeholder="Enter your message"
@@ -80,7 +102,7 @@ const Footer = ({ data }) => {
                                 
                                 <div className={`flex gap-4 mt-4 transition-all duration-300 ease-in-out ${email && isEmailValid && message ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
                                     <Button onClick={handleReset} type="primary" className="!bg-red-500 transition-colors !hover:bg-red-600">Cancel</Button>
-                                    <Button onClick={handleSubmit} type="primary">Send email</Button>
+                                    <Button onClick={handleSubmit} type="primary">{loading ? 'Sending...' : 'Send email'}</Button>
                                 </div>
                             </div>
                         </form>
@@ -108,7 +130,7 @@ const Footer = ({ data }) => {
                                 width={80}
                                 height={40}
                                 priority
-                                className={theme === 'dark' ? 'invert' : ''}
+                                className={isDark ? 'invert' : ''}
                             />
                         </Link>
                     </div>
