@@ -8,6 +8,7 @@ const Cursor = () => {
     const { theme } = useTheme();
     const [ mounted, setMounted ] = useState(false);
     const [ isVisible, setIsVisible ] = useState(true);
+    const isDark = theme === 'dark'
 
     useEffect(() => {
         setMounted(true);
@@ -33,7 +34,7 @@ const Cursor = () => {
     }, []);
 
     const getTheme = () => {
-        return theme === 'dark' ? '#fff' : '#000';
+        return isDark ? '#fff' : '#000';
     }
 
     if (!mounted) return null;
