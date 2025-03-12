@@ -29,8 +29,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install
-          npm install custom-cursor-react --force
+          npm install --force
+          npm install react@18 react-dom@18 --force
 
       - name: Build
         run: npm run build
