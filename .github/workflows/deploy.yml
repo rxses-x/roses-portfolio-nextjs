@@ -29,8 +29,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install --force
-          npm install react@18 react-dom@18 --force
+          # First install all dependencies except custom-cursor-react
+          npm install --no-package-lock --force
+          npm uninstall custom-cursor-react
+          # Then force install custom-cursor-react
+          npm install custom-cursor-react@1.0.5 --force
 
       - name: Build
         run: npm run build
