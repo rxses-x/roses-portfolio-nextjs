@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../Button";
 import { useTheme } from 'next-themes';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 const Header = ({ handleScroll, data }) => {
     const router = useRouter();
@@ -39,15 +40,19 @@ const Header = ({ handleScroll, data }) => {
                                                     setTheme(isDark ? "light" : "dark")
                                                 }
                                             >
-                                                <img
-                                                    className="h-6"
+                                                <Image
+                                                    className="h-6 w-6"
                                                     src={`/images/${isDark ? "moon.svg" : "sun.svg"}`}
+                                                    alt={isDark ? "Dark mode" : "Light mode"}
+                                                    width={24}
+                                                    height={24}
+                                                    unoptimized
                                                 />
                                             </Button>
                                         )}
                                         <PopoverButton>
-                                            <img
-                                                className="h-5"
+                                            <Image
+                                                className="h-5 w-5"
                                                 src={`/images/${!open
                                                     ? isDark
                                                         ? "menu-white.svg"
@@ -55,6 +60,10 @@ const Header = ({ handleScroll, data }) => {
                                                     : theme === "light"
                                                         ? "cancel.svg"
                                                         : "cancel-white.svg"}`}
+                                                alt="Menu"
+                                                width={20}
+                                                height={20}
+                                                unoptimized
                                             />
                                         </PopoverButton>
                                     </div>
@@ -84,7 +93,7 @@ const Header = ({ handleScroll, data }) => {
                             onClick={() => router.push("/")}
                             className="font-medium link"
                         >
-                            {name}
+                            {data.name}
                         </h1>
                         <div className="flex">
                             {['Work', 'About', 'Contact'].map((label, index) => (
@@ -103,9 +112,13 @@ const Header = ({ handleScroll, data }) => {
                                         setTheme(isDark ? "light" : "dark")
                                     }
                                 >
-                                    <img
-                                        className="h-6"
+                                    <Image
+                                        className="h-6 w-6"
                                         src={`/images/${isDark ? "moon.svg" : "sun.svg"}`}
+                                        alt={isDark ? "Dark mode" : "Light mode"}
+                                        width={24}
+                                        height={24}
+                                        unoptimized
                                     />
                                 </Button>
                             )}

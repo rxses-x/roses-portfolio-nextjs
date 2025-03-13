@@ -22,6 +22,7 @@ const WorkCard = ({ img, name, description, onClick }) => {
                     src={img}
                     layout="fill"
                     objectFit="cover"
+                    unoptimized
                 ></Image>
             </div>
             <h2 className={`mt-5 text-3xl font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
