@@ -27,7 +27,7 @@ const Header = ({ handleScroll, data }) => {
                                 <div className="flex items-center justify-between">
                                     <h1
                                         onClick={() => router.push("/")}
-                                        className="font-medium cursor-none link"
+                                        className="font-medium link"
                                     >
                                         {data.name}
                                     </h1>
@@ -82,7 +82,7 @@ const Header = ({ handleScroll, data }) => {
                     >
                         <h1
                             onClick={() => router.push("/")}
-                            className="font-medium cursor-none link"
+                            className="font-medium link"
                         >
                             {name}
                         </h1>

@@ -39,11 +39,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          # First install all dependencies except custom-cursor-react
-          npm install --no-package-lock --force
-          npm uninstall custom-cursor-react
-          # Then force install custom-cursor-react
-          npm install custom-cursor-react@1.0.5 --force
+          # First install all dependencies
+          npm install
 
       - name: Build
         run: npm run build

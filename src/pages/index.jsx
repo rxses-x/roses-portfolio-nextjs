@@ -33,7 +33,7 @@ function Home() {
 
     return (
         <div
-            className={`relative ${data.showCursor && 'cursor-none'}`}
+            className={`relative`}
         >
             {data.showCursor && <Cursor />}
             <Head>
