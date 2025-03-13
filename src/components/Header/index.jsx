@@ -18,6 +18,10 @@ const Header = ({ handleScroll, data }) => {
         setMounted(true);
     }, []);
 
+    if (!mounted) {
+        return null;
+    }
+
     return (
         <>
             {mounted && (
