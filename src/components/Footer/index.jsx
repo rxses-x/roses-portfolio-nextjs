@@ -7,7 +7,7 @@ import { useTheme } from 'next-themes';
 import dataPortfolio from '@/data/portfolio.json';
 import emailjs from '@emailjs/browser';
 
-const Footer = ({ data }) => {
+const Footer = ({ data, ref }) => {
     data = data && data.length > 0 ? data : dataPortfolio;
     const { theme } = useTheme();
     const [email, setEmail] = useState('');
@@ -66,7 +66,7 @@ const Footer = ({ data }) => {
 
     return (
         <>
-            <footer className='mt-5 laptop:mt-40 p-2 laptop:p-0'>
+            <footer className='mt-5 laptop:mt-40 p-2 laptop:p-0' ref={ref}>
                 <div>
                     <h2 className='text-2xl text-bold'>Contact.</h2>
                     <div className="mt-10">

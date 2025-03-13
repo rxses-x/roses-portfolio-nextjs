@@ -35,7 +35,6 @@ function Home() {
         <div
             className={`relative`}
         >
-            {data.showCursor && <Cursor />}
             <Head>
                 <title>{data.name}</title>
                 <meta name="description" content={data.description} />
