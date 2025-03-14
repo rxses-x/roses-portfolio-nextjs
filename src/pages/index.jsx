@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import Cursor from '@/components/Cursor';
 import data from '@/data/portfolio';
 import { useRef } from 'react';
 import GradientCircles from '@/components/GradientCircles';
