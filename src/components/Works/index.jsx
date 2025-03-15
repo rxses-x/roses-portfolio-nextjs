@@ -10,11 +10,15 @@ const Works = forwardRef(({ data }, ref) => {
                 {data.projects.map((project) => (
                     <WorkCards
                         key={project.id}
-                        img={project.imageSrc}
                         name={project.title}
                         description={project.description}
+<<<<<<< Updated upstream
                         languages={project.languages}
                         onClick={project.url ? () => window.open(project.url) : null}
+=======
+                        logo={project.logo}
+                        details={project.details}
+>>>>>>> Stashed changes
                     />
                 ))}
             </div>
