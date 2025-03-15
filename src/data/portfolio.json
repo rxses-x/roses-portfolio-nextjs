@@ -24,11 +24,6 @@
       "id": "1",
       "title": "Riding Cities",
       "description": "Web Development",
-<<<<<<< Updated upstream
-      "imageSrc": "https://images.unsplash.com/photo-1605153864431-a2795a1b2f95?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwyNTY3ODl8fGVufDB8fHw%3D&auto=format&fit=crop&w=400&q=60",
-      "url": "https://rxses-x.github.io/riding-cities/",
-      "languages": ["HTML"]
-=======
       "logo": "/images/logos/riding-cities-logo.svg",
       "details": {
         "imageSrc": ["/images/work/riding-cities.png"],
@@ -36,17 +31,11 @@
         "url": "https://rxses-x.github.io/riding-cities/",
         "urlSrc": "https://github.com/rxses-x/riding-cities"
       }
->>>>>>> Stashed changes
     },
     {
       "id": "2",
       "title": "Booki",
       "description": "Web Development",
-<<<<<<< Updated upstream
-      "imageSrc": "https://images.unsplash.com/photo-1605153864431-a2795a1b2f95?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwyNTY3ODl8fGVufDB8fHw%3D&auto=format&fit=crop&w=400&q=60",
-      "url": "https://rxses-x.github.io/bookie/",
-      "languages": ["HTML", "CSS"]
-=======
       "logo": "/images/logos/booki-logo.svg",
       "details": {
         "imageSrc": ["/images/work/booki.png", "/images/work/booki.png", "/images/work/booki.png", "/images/work/booki.png", "/images/work/booki.png"],
@@ -54,17 +43,11 @@
         "url": "https://rxses-x.github.io/bookie/",
         "urlSrc": "https://github.com/rxses-x/bookie"
       }
->>>>>>> Stashed changes
     },
     {
       "id": "3",
       "title": "Ohmyfood",
       "description": "Web Development",
-<<<<<<< Updated upstream
-      "imageSrc": "https://images.unsplash.com/photo-1605153864431-a2795a1b2f95?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwyNTY3ODl8fGVufDB8fHw%3D&auto=format&fit=crop&w=400&q=60",
-      "url": "https://rxses-x.github.io/rxses-x--ohmyfood/",
-      "languages": ["HTML", "CSS"]
-=======
       "logo": "/images/logos/ohmyfood-logo.svg",
       "details": {
         "imageSrc": ["/images/work/ohmyfood.png"],
@@ -72,17 +55,11 @@
         "url": "https://rxses-x.github.io/rxses-x--ohmyfood/",
         "urlSrc": "https://github.com/rxses-x/rxses-x--ohmyfood"
       }
->>>>>>> Stashed changes
     },
     {
       "id": "4",
       "title": "Print it",
       "description": "Web Development",
-<<<<<<< Updated upstream
-      "imageSrc": "https://images.unsplash.com/photo-1605153864431-a2795a1b2f95?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwyNTY3ODl8fGVufDB8fHw%3D&auto=format&fit=crop&w=400&q=60",
-      "url": "https://rxses-x.github.io/Print-it-JS/",
-      "languages": ["JavaScript"]
-=======
       "logo": "/images/logos/print-it-logo.svg",
       "details": {
         "imageSrc": ["/images/work/print-it.png"],
@@ -90,7 +67,6 @@
         "url": "https://rxses-x.github.io/Print-it-JS/",
         "urlSrc": "https://github.com/rxses-x/Print-it-JS"
       }
->>>>>>> Stashed changes
     },
     {
       "id": "5",
@@ -108,11 +84,6 @@
       "id": "6",
       "title": "Kasa",
       "description": "Web Development",
-<<<<<<< Updated upstream
-      "imageSrc": "/images/work/kasa.png",
-      "url": "https://rxses-x.github.io/kasa/",
-      "languages": ["React"]
-=======
       "logo": "/images/logos/kasa-logo.svg",
       "details": {
         "imageSrc": ["/images/work/kasa.png", "/images/work/argent-bank.png", "/images/work/kasa.png", "/images/work/argent-bank.png", "/images/work/kasa.png", "/images/work/argent-bank.png"],
@@ -120,7 +91,6 @@
         "url": "https://rxses-x.github.io/kasa/",
         "urlSrc": "https://github.com/rxses-x/kasa"
       }
->>>>>>> Stashed changes
     },
     {
       "id": "7",
@@ -138,11 +108,6 @@
       "id": "8",
       "title": "724events",
       "description": "Web Development",
-<<<<<<< Updated upstream
-      "imageSrc": "https://images.unsplash.com/photo-1605153864431-a2795a1b2f95?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwyNTY3ODl8fGVufDB8fHw%3D&auto=format&fit=crop&w=400&q=60",
-      "url": "https://rxses-x.github.io/",
-      "languages": ["React", "Node.js"]
-=======
       "logo": "/images/logos/724events-logo.svg",
       "details": {
         "imageSrc": ["/images/work/724events.png"],
@@ -150,17 +115,11 @@
         "url": "https://rxses-x.github.io/",
         "urlSrc": "https://github.com/rxses-x/724events"
       }
->>>>>>> Stashed changes
     },
     {
       "id": "9",
       "title": "Argent Bank",
       "description": "Web Development",
-<<<<<<< Updated upstream
-      "imageSrc": "/images/work/argent-bank.png",
-      "url": "https://github.com/rxses-x/ArgentBank-Frontend",
-      "languages": ["React", "Node.js"]
-=======
       "logo": "/images/logos/argent-bank-logo.svg",
       "details": {
         "imageSrc": ["/images/work/argent-bank.png"],
@@ -168,7 +127,6 @@
         "url": "https://github.com/rxses-x/ArgentBank-Frontend",
         "urlSrc": "https://github.com/rxses-x/ArgentBank-Frontend"
       }
->>>>>>> Stashed changes
     },
     {
       "id": "10",
@@ -248,30 +206,6 @@
       {
         "name": "Git",
         "url": "https://git-scm.com/"
-      },
-      {
-        "name": "VS Code",
-        "url": "https://code.visualstudio.com/"
-      },
-      {
-        "name": "Cursor",
-        "url": "https://cursor.sh/"
-      },
-      {
-        "name": "Chrome DevTools",
-        "url": "https://developer.chrome.com/docs/devtools/"
-      },
-      {
-        "name": "Figma",
-        "url": "https://www.figma.com/"
-      },
-      {
-        "name": "npm",
-        "url": "https://www.npmjs.com/"
-      },
-      {
-        "name": "Notion",
-        "url": "https://www.notion.so/"
       }
     ]
   }

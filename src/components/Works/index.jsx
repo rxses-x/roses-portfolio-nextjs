@@ -12,18 +12,15 @@ const Works = forwardRef(({ data }, ref) => {
                         key={project.id}
                         name={project.title}
                         description={project.description}
-<<<<<<< Updated upstream
-                        languages={project.languages}
-                        onClick={project.url ? () => window.open(project.url) : null}
-=======
                         logo={project.logo}
                         details={project.details}
->>>>>>> Stashed changes
                     />
                 ))}
             </div>
         </section>
     )
 })
+
+Works.displayName = 'Works';
 
 export default Works;
