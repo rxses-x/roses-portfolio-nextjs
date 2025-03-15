@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
@@ -10,10 +10,23 @@ const Carousel = ({ images, projectName }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [loadedImages, setLoadedImages] = useState(new Set());
     const [isPaused, setIsPaused] = useState(false);
-    const [direction, setDirection] = useState(0); // -1 for left, 1 for right
 
     // Ensure images is always an array
     const imageArray = Array.isArray(images) ? images : [];
+
+    const goToNext = useCallback(() => {
+        if (imageArray.length <= 1) return;
+        setCurrentIndex(prev => (prev + 1) % imageArray.length);
+    }, [imageArray.length]);
+
+    const goToPrev = useCallback(() => {
+        if (imageArray.length <= 1) return;
+        setCurrentIndex(prev => (prev - 1 + imageArray.length) % imageArray.length);
+    }, [imageArray.length]);
+
+    const resumeAutoPlay = useCallback(() => {
+        setIsPaused(false);
+    }, []);
 
     // Reset states when images prop changes
     useEffect(() => {
@@ -22,55 +35,30 @@ const Carousel = ({ images, projectName }) => {
         setIsLoading(true);
         setLoadedImages(new Set());
         setIsPaused(false);
-        setDirection(0);
     }, [images]);
 
     // Auto-play functionality
     useEffect(() => {
         if (imageArray.length <= 1 || isPaused) return;
 
-        const timer = setInterval(() => {
-            setDirection(1);
-            handleNext();
-        }, 5000);
-
+        const timer = setInterval(goToNext, 5000);
         return () => clearInterval(timer);
-    }, [currentIndex, isPaused, imageArray.length]);
+    }, [isPaused, imageArray.length, goToNext]);
 
     // Add keyboard navigation
     useEffect(() => {
         const handleKeyDown = (e) => {
-            setIsPaused(true); // Pause on keyboard interaction
+            setIsPaused(true);
             if (e.key === 'ArrowLeft') {
-                setDirection(-1);
-                handlePrev();
+                goToPrev();
             } else if (e.key === 'ArrowRight') {
-                setDirection(1);
-                handleNext();
+                goToNext();
             }
         };
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [currentIndex, imageArray.length]);
-
-    const handleNext = () => {
-        if (imageArray.length <= 1) return;
-        const nextIndex = (currentIndex + 1) % imageArray.length;
-        setCurrentIndex(nextIndex);
-        if (!loadedImages.has(imageArray[nextIndex])) {
-            setIsLoading(true);
-        }
-    };
-
-    const handlePrev = () => {
-        if (imageArray.length <= 1) return;
-        const prevIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
-        setCurrentIndex(prevIndex);
-        if (!loadedImages.has(imageArray[prevIndex])) {
-            setIsLoading(true);
-        }
-    };
+    }, [goToNext, goToPrev]);
 
     const handleImageLoad = () => {
         setIsLoading(false);
@@ -95,7 +83,9 @@ const Carousel = ({ images, projectName }) => {
         <div 
             className="relative w-full h-full group overflow-hidden rounded-lg"
             onMouseEnter={handleUserInteraction}
+            onMouseLeave={resumeAutoPlay}
             onTouchStart={handleUserInteraction}
+            onTouchEnd={resumeAutoPlay}
         >
             {/* Loading indicator */}
             {isLoading && !loadedImages.has(imageArray[currentIndex]) && (
@@ -113,12 +103,6 @@ const Carousel = ({ images, projectName }) => {
                         isLoading && !loadedImages.has(imageArray[currentIndex]) 
                             ? 'opacity-0 scale-95' 
                             : 'opacity-100 scale-100'
-                    } ${
-                        direction === 1 
-                            ? 'animate-slideLeft' 
-                            : direction === -1 
-                                ? 'animate-slideRight' 
-                                : ''
                     }`}
                     fill
                     quality={100}
@@ -134,8 +118,7 @@ const Carousel = ({ images, projectName }) => {
                     <button
                         onClick={() => {
                             handleUserInteraction();
-                            setDirection(-1);
-                            handlePrev();
+                            goToPrev();
                         }}
                         className={`absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full 
                             ${isDark ? 'bg-[#2d2d2d]/80' : 'bg-white/80'} 
@@ -153,8 +136,7 @@ const Carousel = ({ images, projectName }) => {
                     <button
                         onClick={() => {
                             handleUserInteraction();
-                            setDirection(1);
-                            handleNext();
+                            goToNext();
                         }}
                         className={`absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full 
                             ${isDark ? 'bg-[#2d2d2d]/80' : 'bg-white/80'} 
@@ -179,12 +161,8 @@ const Carousel = ({ images, projectName }) => {
                         <button
                             key={index}
                             onClick={() => {
-                                handleUserInteraction();
-                                setDirection(index > currentIndex ? 1 : -1);
                                 setCurrentIndex(index);
-                                if (!loadedImages.has(imageArray[index])) {
-                                    setIsLoading(true);
-                                }
+                                resumeAutoPlay();
                             }}
                             className={`w-2 h-2 rounded-full transition-all duration-300 
                                 ${index === currentIndex 
