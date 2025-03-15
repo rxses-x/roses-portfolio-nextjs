@@ -2,20 +2,18 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
-const WorkCard = ({ img, name, description, onClick }) => {
+const WorkCard = ({ img, name, description, onClick, languages = [] }) => {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
 
     return (
         <div
-            className={`overflow-hidden rounded-lg laptop:p-4 first:ml-0 link ${
+            className={`group overflow-hidden rounded-lg laptop:p-4 first:ml-0 link ${
                 isDark ? 'hover:bg-[#1a1a1a]' : 'hover:bg-gray-50'
             } transition-all duration-300`}
             onClick={onClick}
         >
-            <div
-                className="relative rounded-lg overflow-hidden transition-all ease-out duration-300 h-48 mob:h-48 tablet:h-[300px] laptop:h-[600px]"
-            >
+            <div className="relative rounded-lg overflow-hidden transition-all ease-out duration-300 h-48 mob:h-48 tablet:h-[300px] laptop:h-[600px]">
                 <Image
                     alt={name}
                     className="h-full w-full hover:scale-110 transition-all ease-out duration-300"
@@ -23,7 +21,23 @@ const WorkCard = ({ img, name, description, onClick }) => {
                     layout="fill"
                     objectFit="cover"
                     unoptimized
-                ></Image>
+                />
+                {languages && languages.length > 0 && (
+                    <div className="absolute top-2 right-2 grid grid-cols-1 gap-2 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                        {languages.map((lang, index) => (
+                            <span
+                                key={index}
+                                className={`px-3 py-1 text-sm rounded-full backdrop-blur-md transition-all duration-300 ${
+                                    isDark 
+                                        ? 'bg-black/70 text-white hover:bg-black/80' 
+                                        : 'bg-white/70 text-gray-900 hover:bg-white/80'
+                                }`}
+                            >
+                                {lang}
+                            </span>
+                        ))}
+                    </div>
+                )}
             </div>
             <h2 className={`mt-5 text-3xl font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 {name ? name : "Project Name"}
