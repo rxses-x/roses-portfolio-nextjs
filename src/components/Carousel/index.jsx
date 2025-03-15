@@ -1,6 +1,43 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, memo } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
+
+// Memoized navigation arrow component
+const NavigationArrow = memo(({ direction, onClick, isDark }) => (
+    <button
+        onClick={onClick}
+        className={`absolute ${direction === 'left' ? 'left-4' : 'right-4'} top-1/2 -translate-y-1/2 p-4 rounded-full 
+            ${isDark ? 'bg-[#2d2d2d]/80' : 'bg-white/80'} 
+            opacity-0 group-hover:opacity-100 hover:opacity-100 
+            transition-all duration-300 ease-in-out
+            hover:scale-110 active:scale-95
+            shadow-lg backdrop-blur-sm z-30
+            ${isDark ? 'hover:bg-[#2d2d2d]' : 'hover:bg-white'}`}
+        aria-label={`${direction === 'left' ? 'Previous' : 'Next'} image`}
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${isDark ? 'text-white' : 'text-gray-800'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d={direction === 'left' ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"} />
+        </svg>
+    </button>
+));
+
+// Memoized dot navigation component
+const DotNavigation = memo(({ currentIndex, totalImages, onDotClick, isDark }) => (
+    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 z-30 px-4 py-2 rounded-full bg-black/20 backdrop-blur-sm">
+        {Array.from({ length: totalImages }, (_, index) => (
+            <button
+                key={index}
+                onClick={() => onDotClick(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 
+                    ${index === currentIndex 
+                        ? 'w-4 bg-white' 
+                        : 'bg-white/50 hover:bg-white/75'
+                    }`}
+                aria-label={`Go to image ${index + 1}`}
+            />
+        ))}
+    </div>
+));
 
 const Carousel = ({ images, projectName }) => {
     const { theme } = useTheme();
@@ -24,9 +61,23 @@ const Carousel = ({ images, projectName }) => {
         setCurrentIndex(prev => (prev - 1 + imageArray.length) % imageArray.length);
     }, [imageArray.length]);
 
+    const handleUserInteraction = useCallback(() => {
+        setIsPaused(true);
+    }, []);
+
     const resumeAutoPlay = useCallback(() => {
         setIsPaused(false);
     }, []);
+
+    const handleImageLoad = useCallback(() => {
+        setIsLoading(false);
+        setLoadedImages(prev => new Set([...prev, imageArray[currentIndex]]));
+    }, [imageArray, currentIndex]);
+
+    const handleDotClick = useCallback((index) => {
+        setCurrentIndex(index);
+        resumeAutoPlay();
+    }, [resumeAutoPlay]);
 
     // Reset states when images prop changes
     useEffect(() => {
@@ -40,34 +91,22 @@ const Carousel = ({ images, projectName }) => {
     // Auto-play functionality
     useEffect(() => {
         if (imageArray.length <= 1 || isPaused) return;
-
         const timer = setInterval(goToNext, 5000);
         return () => clearInterval(timer);
     }, [isPaused, imageArray.length, goToNext]);
 
-    // Add keyboard navigation
+    // Keyboard navigation
     useEffect(() => {
         const handleKeyDown = (e) => {
-            setIsPaused(true);
-            if (e.key === 'ArrowLeft') {
-                goToPrev();
-            } else if (e.key === 'ArrowRight') {
-                goToNext();
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                setIsPaused(true);
+                e.key === 'ArrowLeft' ? goToPrev() : goToNext();
             }
         };
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [goToNext, goToPrev]);
-
-    const handleImageLoad = () => {
-        setIsLoading(false);
-        setLoadedImages(prev => new Set([...prev, imageArray[currentIndex]]));
-    };
-
-    const handleUserInteraction = () => {
-        setIsPaused(true);
-    };
 
     if (!imageArray || imageArray.length === 0 || imageError) {
         return (
@@ -115,64 +154,27 @@ const Carousel = ({ images, projectName }) => {
             {/* Navigation arrows */}
             {imageArray.length > 1 && (
                 <>
-                    <button
-                        onClick={() => {
-                            handleUserInteraction();
-                            goToPrev();
-                        }}
-                        className={`absolute left-4 top-1/2 -translate-y-1/2 p-4 rounded-full 
-                            ${isDark ? 'bg-[#2d2d2d]/80' : 'bg-white/80'} 
-                            opacity-0 group-hover:opacity-100 hover:opacity-100 
-                            transition-all duration-300 ease-in-out
-                            hover:scale-110 active:scale-95
-                            shadow-lg backdrop-blur-sm z-30
-                            ${isDark ? 'hover:bg-[#2d2d2d]' : 'hover:bg-white'}`}
-                        aria-label="Previous image"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${isDark ? 'text-white' : 'text-gray-800'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </button>
-                    <button
-                        onClick={() => {
-                            handleUserInteraction();
-                            goToNext();
-                        }}
-                        className={`absolute right-4 top-1/2 -translate-y-1/2 p-4 rounded-full 
-                            ${isDark ? 'bg-[#2d2d2d]/80' : 'bg-white/80'} 
-                            opacity-0 group-hover:opacity-100 hover:opacity-100 
-                            transition-all duration-300 ease-in-out
-                            hover:scale-110 active:scale-95
-                            shadow-lg backdrop-blur-sm z-30
-                            ${isDark ? 'hover:bg-[#2d2d2d]' : 'hover:bg-white'}`}
-                        aria-label="Next image"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${isDark ? 'text-white' : 'text-gray-800'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
+                    <NavigationArrow 
+                        direction="left" 
+                        onClick={() => { handleUserInteraction(); goToPrev(); }} 
+                        isDark={isDark} 
+                    />
+                    <NavigationArrow 
+                        direction="right" 
+                        onClick={() => { handleUserInteraction(); goToNext(); }} 
+                        isDark={isDark} 
+                    />
                 </>
             )}
 
             {/* Dots navigation */}
             {imageArray.length > 1 && (
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 z-30 px-4 py-2 rounded-full bg-black/20 backdrop-blur-sm">
-                    {imageArray.map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => {
-                                setCurrentIndex(index);
-                                resumeAutoPlay();
-                            }}
-                            className={`w-2 h-2 rounded-full transition-all duration-300 
-                                ${index === currentIndex 
-                                    ? 'w-4 bg-white' 
-                                    : 'bg-white/50 hover:bg-white/75'
-                                }`}
-                            aria-label={`Go to image ${index + 1}`}
-                        />
-                    ))}
-                </div>
+                <DotNavigation 
+                    currentIndex={currentIndex}
+                    totalImages={imageArray.length}
+                    onDotClick={handleDotClick}
+                    isDark={isDark}
+                />
             )}
 
             {/* Image counter */}
@@ -189,4 +191,4 @@ const Carousel = ({ images, projectName }) => {
     );
 };
 
-export default Carousel; 
+export default memo(Carousel); 
