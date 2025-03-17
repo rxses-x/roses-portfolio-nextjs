@@ -24,7 +24,7 @@
       "id": "1",
       "title": "Riding Cities",
       "description": "Web Development",
-      "logo": "/images/logos/riding-cities-logo.svg",
+      "logo": null,
       "visible": true,
       "details": {
         "imageSrc": ["/images/work/riding-cities.png", "/images/work/riding-cities-2.png", "/images/work/riding-cities-3.png"],
@@ -65,7 +65,7 @@
       "id": "4",
       "title": "Print it",
       "description": "Web Development",
-      "logo": "/images/logos/print-it-logo.svg",
+      "logo": null,
       "visible": true,
       "details": {
         "imageSrc": ["/images/work/print-it.png", "/images/work/print-it-2.png", "/images/work/print-it-3.png"],

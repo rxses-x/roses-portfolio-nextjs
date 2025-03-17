@@ -39,7 +39,7 @@ const ProjectLogo = ({ name, logoSrc }) => {
                         }`}
                         priority
                         onError={() => {
-                            console.warn(`Logo not found for ${name}: ${logoSrc}`);
+                            // console.warn(`Logo not found for ${name}: ${logoSrc}`);
                             setLogoError(true);
                         }}
                     />

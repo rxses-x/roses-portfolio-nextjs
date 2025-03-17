@@ -119,9 +119,9 @@ const Footer = ({ data, ref }) => {
                                 Roses x
                             </Link>
                         </h2>
-                        <Link href="https://nextjs.org" className="mt-2 inline-flex items-center">
-                            <span className='mr-2'>
-                                Developped with{" "}
+                        <Link href="https://nextjs.org" className="mt-2 flex items-center gap-2">
+                            <span>
+                                Developped with
                             </span>
                             <Image
                                 aria-hidden
@@ -130,7 +130,7 @@ const Footer = ({ data, ref }) => {
                                 width={80}
                                 height={40}
                                 priority
-                                className={isDark ? 'invert' : ''}
+                                className={`${isDark ? 'invert' : ''}`}
                             />
                         </Link>
                     </div>
