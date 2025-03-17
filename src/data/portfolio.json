@@ -135,7 +135,7 @@
       "logo": "/images/logos/argent-bank-logo.svg",
       "visible": false,
       "details": {
-        "imageSrc": ["/images/work/argent-bank.png"],
+        "imageSrc": ["/images/work/argent-bank.png", "/images/work/argent-bank-2.png"],
         "description": "A banking application with user authentication.",
         "url": "https://github.com/rxses-x/ArgentBank-Frontend",
         "urlSrc": "https://github.com/rxses-x/ArgentBank-Frontend",
@@ -217,6 +217,30 @@
       {
         "name": "Git",
         "url": "https://git-scm.com/"
+      },
+      {
+        "name": "VS Code",
+        "url": "https://code.visualstudio.com/"
+      },
+      {
+        "name": "Cursor",
+        "url": "https://cursor.sh/"
+      },
+      {
+        "name": "Chrome DevTools",
+        "url": "https://developer.chrome.com/docs/devtools/"
+      },
+      {
+        "name": "Figma",
+        "url": "https://www.figma.com/"
+      },
+      {
+        "name": "npm",
+        "url": "https://www.npmjs.com/"
+      },
+      {
+        "name": "Notion",
+        "url": "https://www.notion.so/"
       }
     ]
   }
