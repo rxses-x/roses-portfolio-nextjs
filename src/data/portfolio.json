@@ -25,8 +25,9 @@
       "title": "Riding Cities",
       "description": "Web Development",
       "logo": "/images/logos/riding-cities-logo.svg",
+      "visible": true,
       "details": {
-        "imageSrc": ["/images/work/riding-cities.png"],
+        "imageSrc": ["/images/work/riding-cities.png", "/images/work/riding-cities-2.png", "/images/work/riding-cities-3.png"],
         "description": "A website for a skateboarding association.",
         "url": "https://rxses-x.github.io/riding-cities/",
         "urlSrc": "https://github.com/rxses-x/riding-cities"
@@ -37,11 +38,13 @@
       "title": "Booki",
       "description": "Web Development",
       "logo": "/images/logos/booki-logo.svg",
+      "visible": true,
       "details": {
         "imageSrc": ["/images/work/booki.png", "/images/work/booki.png", "/images/work/booki.png", "/images/work/booki.png", "/images/work/booki.png"],
         "description": "An accommodation and activity booking platform.",
         "url": "https://rxses-x.github.io/bookie/",
-        "urlSrc": "https://github.com/rxses-x/bookie"
+        "urlSrc": "https://github.com/rxses-x/bookie",
+        "languages": ["HTML", "CSS"]
       }
     },
     {
@@ -49,11 +52,13 @@
       "title": "Ohmyfood",
       "description": "Web Development",
       "logo": "/images/logos/ohmyfood-logo.svg",
+      "visible": true,
       "details": {
-        "imageSrc": ["/images/work/ohmyfood.png"],
+        "imageSrc": ["/images/work/ohmyfood.png", "/images/work/ohmyfood-1.png"],
         "description": "A food delivery application for high-end restaurants.",
         "url": "https://rxses-x.github.io/rxses-x--ohmyfood/",
-        "urlSrc": "https://github.com/rxses-x/rxses-x--ohmyfood"
+        "urlSrc": "https://github.com/rxses-x/rxses-x--ohmyfood",
+        "languages": ["HTML", "CSS"]
       }
     },
     {
@@ -61,11 +66,13 @@
       "title": "Print it",
       "description": "Web Development",
       "logo": "/images/logos/print-it-logo.svg",
+      "visible": true,
       "details": {
-        "imageSrc": ["/images/work/print-it.png"],
+        "imageSrc": ["/images/work/print-it.png", "/images/work/print-it-2.png", "/images/work/print-it-3.png"],
         "description": "A printing company website with interactive features.",
         "url": "https://rxses-x.github.io/Print-it-JS/",
-        "urlSrc": "https://github.com/rxses-x/Print-it-JS"
+        "urlSrc": "https://github.com/rxses-x/Print-it-JS",
+        "languages": ["HTML", "CSS", "JavaScript"]
       }
     },
     {
@@ -73,6 +80,7 @@
       "title": "Sophie Bluel",
       "description": "Web Development",
       "logo": "/images/logos/sophie-bluel-logo.svg",
+      "visible": false,
       "details": {
         "imageSrc": ["/images/work/sophie-bluel.png"],
         "description": "A portfolio website for an interior architect.",
@@ -85,11 +93,13 @@
       "title": "Kasa",
       "description": "Web Development",
       "logo": "/images/logos/kasa-logo.svg",
+      "visible": true,
       "details": {
-        "imageSrc": ["/images/work/kasa.png", "/images/work/argent-bank.png", "/images/work/kasa.png", "/images/work/argent-bank.png", "/images/work/kasa.png", "/images/work/argent-bank.png"],
+        "imageSrc": ["/images/work/kasa.png", "/images/work/kasa-2.png", "/images/work/kasa-3.png"],
         "description": "Kasa is a web application that allows users to rent a house.",
         "url": "https://rxses-x.github.io/kasa/",
-        "urlSrc": "https://github.com/rxses-x/kasa"
+        "urlSrc": "https://github.com/rxses-x/kasa",
+        "languages": ["React", "SASS"]
       }
     },
     {
@@ -97,11 +107,11 @@
       "title": "Nina Carducci",
       "description": "Web Development",
       "logo": "/images/logos/nina-carducci-logo.svg",
+      "visible": false,
       "details": {
         "imageSrc": ["/images/work/nina-carducci.png"],
         "description": "A portfolio website for a professional photographer.",
-        "url": "https://rxses-x.github.io/",
-        "urlSrc": "https://github.com/rxses-x/nina-carducci"
+        "urlSrc": "https://github.com/rxses-x/ninacarducci.github.io"
       }
     },
     {
@@ -109,11 +119,13 @@
       "title": "724events",
       "description": "Web Development",
       "logo": "/images/logos/724events-logo.svg",
+      "visible": false,
       "details": {
         "imageSrc": ["/images/work/724events.png"],
         "description": "An event planning agency website.",
         "url": "https://rxses-x.github.io/",
-        "urlSrc": "https://github.com/rxses-x/724events"
+        "urlSrc": "https://github.com/rxses-x/724events",
+        "languages": ["React", "CSS"]
       }
     },
     {
@@ -121,11 +133,13 @@
       "title": "Argent Bank",
       "description": "Web Development",
       "logo": "/images/logos/argent-bank-logo.svg",
+      "visible": false,
       "details": {
         "imageSrc": ["/images/work/argent-bank.png"],
         "description": "A banking application with user authentication.",
         "url": "https://github.com/rxses-x/ArgentBank-Frontend",
-        "urlSrc": "https://github.com/rxses-x/ArgentBank-Frontend"
+        "urlSrc": "https://github.com/rxses-x/ArgentBank-Frontend",
+        "languages": ["React", "SASS"]
       }
     },
     {
@@ -133,6 +147,7 @@
       "title": "Menu Maker",
       "description": "Web Development",
       "logo": "/images/logos/menu-maker-logo.svg",
+      "visible": false,
       "details": {
         "imageSrc": ["/images/work/menu-maker.png"],
         "description": "A menu planning application for restaurants.",
@@ -196,10 +211,6 @@
       {
         "name": "TailwindCSS",
         "url": "https://tailwindcss.com/"
-      },
-      {
-        "name": "Bootstrap",
-        "url": "https://getbootstrap.com/"
       }
     ],
     "tools": [

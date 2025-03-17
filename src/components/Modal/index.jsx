@@ -77,6 +77,22 @@ const Modal = ({ isOpen, onClose, projectName, details }) => {
                         {projectDetails.description && (
                             <p>{projectDetails.description}</p>
                         )}
+                        {projectDetails.languages && (
+                            <div className="flex flex-wrap gap-2 mt-3">
+                                {projectDetails.languages.map((language, index) => (
+                                    <span
+                                        key={index}
+                                        className={`px-3 py-1 rounded-full text-sm ${
+                                            isDark 
+                                                ? 'bg-[#2d2d2d] text-gray-300' 
+                                                : 'bg-gray-100 text-gray-600'
+                                        }`}
+                                    >
+                                        {language}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
                         {projectDetails.url && (
                             <div className="block mt-2 text-base">
                                 <span className={isDark ? 'text-gray-300' : 'text-gray-600'}>

@@ -7,7 +7,7 @@ const Works = forwardRef(({ data }, ref) => {
             <h2 className="text-2xl text-bold">Works.</h2>
 
             <div className="mt-5 mb-10 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
-                {data.projects.map((project) => (
+                {data.projects.filter(project => project.visible).map((project) => (
                     <WorkCards
                         key={project.id}
                         name={project.title}
