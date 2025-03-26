@@ -2,8 +2,14 @@ import React, { useState, useEffect, useCallback, memo } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
+interface NavigationArrowProps {
+    direction: 'left' | 'right';
+    onClick: () => void;
+    isDark: boolean;
+}
+
 // Memoized navigation arrow component
-const NavigationArrow = memo(({ direction, onClick, isDark }) => (
+const NavigationArrow = memo<NavigationArrowProps>(({ direction, onClick, isDark }) => (
     <button
         onClick={onClick}
         className={`absolute ${direction === 'left' ? 'left-4' : 'right-4'} top-1/2 -translate-y-1/2 p-4 rounded-full 
@@ -21,8 +27,15 @@ const NavigationArrow = memo(({ direction, onClick, isDark }) => (
     </button>
 ));
 
+interface DotNavigationProps {
+    currentIndex: number;
+    totalImages: number;
+    onDotClick: (index: number) => void;
+    isDark: boolean;
+}
+
 // Memoized dot navigation component
-const DotNavigation = memo(({ currentIndex, totalImages, onDotClick, isDark }) => (
+const DotNavigation = memo<DotNavigationProps>(({ currentIndex, totalImages, onDotClick, isDark }) => (
     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 z-30 px-4 py-2 rounded-full bg-black/20 backdrop-blur-sm">
         {Array.from({ length: totalImages }, (_, index) => (
             <button
@@ -39,13 +52,18 @@ const DotNavigation = memo(({ currentIndex, totalImages, onDotClick, isDark }) =
     </div>
 ));
 
-const Carousel = ({ images, projectName }) => {
+interface CarouselProps {
+    images: string[];
+    projectName: string;
+}
+
+const Carousel: React.FC<CarouselProps> = ({ images, projectName }) => {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
     const [currentIndex, setCurrentIndex] = useState(0);
     const [imageError, setImageError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-    const [loadedImages, setLoadedImages] = useState(new Set());
+    const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
     const [isPaused, setIsPaused] = useState(false);
 
     // Ensure images is always an array
@@ -71,10 +89,10 @@ const Carousel = ({ images, projectName }) => {
 
     const handleImageLoad = useCallback(() => {
         setIsLoading(false);
-        setLoadedImages(prev => new Set([...prev, imageArray[currentIndex]]));
+        setLoadedImages(prev => new Set([...Array.from(prev), imageArray[currentIndex]]));
     }, [imageArray, currentIndex]);
 
-    const handleDotClick = useCallback((index) => {
+    const handleDotClick = useCallback((index: number) => {
         setCurrentIndex(index);
         resumeAutoPlay();
     }, [resumeAutoPlay]);
@@ -97,7 +115,7 @@ const Carousel = ({ images, projectName }) => {
 
     // Keyboard navigation
     useEffect(() => {
-        const handleKeyDown = (e) => {
+        const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
                 setIsPaused(true);
                 e.key === 'ArrowLeft' ? goToPrev() : goToNext();
@@ -190,5 +208,8 @@ const Carousel = ({ images, projectName }) => {
         </div>
     );
 };
+
+NavigationArrow.displayName = 'NavigationArrow';
+DotNavigation.displayName = 'DotNavigation';
 
 export default memo(Carousel); 

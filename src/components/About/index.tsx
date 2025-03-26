@@ -1,18 +1,19 @@
-import React, { forwardRef, Ref } from 'react';
-import Resume from '../Resume';
-
-interface AboutData {
-    about: string;
-    showResume?: boolean;
-    resumeData?: any;
-}
+import { forwardRef } from 'react';
+import Resume, { ResumeData } from '../Resume';
 
 interface AboutProps {
-    className?: string;
-    data: AboutData;
+  className?: string;
+  data: {
+    about: string;
+    showResume: boolean;
+    experience: ResumeData['experience'];
+    education: ResumeData['education'];
+    skills: ResumeData['skills'];
+    [key: string]: any;
+  };
 }
 
-const About = forwardRef<HTMLElement, AboutProps>(({ className, data }, ref) => {
+const About = forwardRef<HTMLDivElement, AboutProps>(({ className, data }, ref) => {
     return (
         <section ref={ref} className={className}>
             <div className="mb-20">
@@ -23,8 +24,8 @@ const About = forwardRef<HTMLElement, AboutProps>(({ className, data }, ref) => 
             </div>
             {data.showResume && <Resume data={data} />}
         </section>
-    );
+    )
 });
 
 About.displayName = 'About';
-export default About; 
+export default About;

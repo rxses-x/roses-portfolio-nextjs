@@ -1,9 +1,9 @@
 // "use client";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import React, { useEffect, useState } from "react";
-import Button from "../Button";
+import Button from "@/components/Button";
 import { useTheme } from 'next-themes';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import Image from 'next/image';
 
 interface HeaderProps {
@@ -15,7 +15,6 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ handleScroll, data }) => {
-    const router = useRouter();
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     const isDark = theme === 'dark';
@@ -35,12 +34,9 @@ const Header: React.FC<HeaderProps> = ({ handleScroll, data }) => {
                         {({ open }) => (
                             <>
                                 <div className="flex items-center justify-between">
-                                    <h1
-                                        onClick={() => router.push("/")}
-                                        className="font-medium link"
-                                    >
+                                    <Link href="/" className="font-medium link">
                                         {data.name}
-                                    </h1>
+                                    </Link>
 
                                     <div className="flex items-center">
                                         {data.darkMode && (
@@ -98,12 +94,9 @@ const Header: React.FC<HeaderProps> = ({ handleScroll, data }) => {
                     <div
                         className={`mt-10 hidden flex flex-row items-center justify-between sticky ${theme === 'light' && 'bg-white'} dark:text-white top-0 z-10 tablet:flex tablet:pl-2`}
                     >
-                        <h1
-                            onClick={() => router.push("/")}
-                            className="font-medium link"
-                        >
+                        <Link href="/" className="font-medium link">
                             {data.name}
-                        </h1>
+                        </Link>
                         <div className="flex">
                             {['Work', 'About', 'Contact'].map((label, index) => (
                                 label && (

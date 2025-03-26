@@ -1,7 +1,49 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 
-const Resume = ({ data }) => {
+interface Skill {
+  name: string;
+  url: string;
+}
+
+interface Experience {
+  title: string;
+  company: string;
+  period: string;
+  type: string;
+  achievements: string[];
+}
+
+interface Education {
+  university: string;
+  degree: string;
+  period: string;
+  description: string;
+  url: string;
+}
+
+interface Skills {
+  languages: Skill[];
+  frameworks: Skill[];
+  tools: Skill[];
+}
+
+export interface ResumeData {
+  experience: Experience[];
+  education: Education;
+  skills: Skills;
+}
+
+interface ResumeProps {
+  data: ResumeData;
+}
+
+interface SkillButtonProps {
+  skill: Skill;
+}
+
+const Resume: React.FC<ResumeProps> = ({ data }) => {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
@@ -27,7 +69,7 @@ const Resume = ({ data }) => {
     }
   };
 
-  const SkillButton = ({ skill }) => (
+  const SkillButton: React.FC<SkillButtonProps> = ({ skill }) => (
     <motion.a
       href={skill.url}
       target="_blank"

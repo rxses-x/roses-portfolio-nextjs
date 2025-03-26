@@ -1,12 +1,17 @@
 import React, { useMemo, useState } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import { generateRandomGradient } from '../../utils/backgroundUtils';
+import { generateRandomGradient } from '@/utils/backgroundUtils';
 
-const ProjectLogo = ({ name, logoSrc }) => {
+interface ProjectLogoProps {
+    name: string;
+    logoSrc: string | null;
+}
+
+const ProjectLogo: React.FC<ProjectLogoProps> = ({ name, logoSrc }) => {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
-    const [logoError, setLogoError] = useState(false);
+    const [logoError, setLogoError] = useState<boolean>(false);
     
     // Get first letter of each word for fallback
     const initials = name

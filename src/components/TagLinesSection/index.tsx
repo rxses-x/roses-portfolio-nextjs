@@ -1,12 +1,7 @@
-import { motion, Variants } from 'framer-motion';
-import React from 'react';
+import { motion } from 'framer-motion';
 
-interface TagLinesSectionProps {
-    data: string[];
-}
-
-const TagLinesSection: React.FC<TagLinesSectionProps> = ({ data }) => {
-    const container: Variants = {
+const TagLinesSection = ({ data }) => {
+    const container = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
@@ -16,7 +11,7 @@ const TagLinesSection: React.FC<TagLinesSectionProps> = ({ data }) => {
         }
     };
 
-    const item: Variants = {
+    const item = {
         hidden: {
             opacity: 0,
             y: 40,
@@ -49,7 +44,7 @@ const TagLinesSection: React.FC<TagLinesSectionProps> = ({ data }) => {
                 variants={item}
                 className='text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5'
             >
-                &quot;Hello 👋&quot;
+                "Hello 👋"
             </motion.h1>
             {data.map((tagLines, index) => (
                 <motion.h2
@@ -61,7 +56,7 @@ const TagLinesSection: React.FC<TagLinesSectionProps> = ({ data }) => {
                 </motion.h2>
             ))}
         </motion.section>
-    );
-};
+    )
+}
 
-export default TagLinesSection; 
+export default TagLinesSection;

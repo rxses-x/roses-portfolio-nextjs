@@ -1,24 +1,23 @@
-import React, { useEffect, KeyboardEvent as ReactKeyboardEvent } from 'react';
+import React, { useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import Carousel from '../Carousel';
-
-interface ProjectDetails {
-    description?: string;
-    imageSrc?: string[];
-    languages?: string[];
-    url?: string;
-    urlSrc?: string;
-}
+import Carousel from '@/components/Carousel';
 
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
     projectName: string;
-    details: ProjectDetails;
-    description?: string;
+    tags: string;
+    details: {
+        imageSrc?: string[];
+        description?: string;
+        languages?: string[];
+        url?: string;
+        urlSrc?: string;
+        [key: string]: any;
+    };
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, projectName, details, description }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, projectName, tags, details }) => {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
 
@@ -56,7 +55,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, projectName, details, de
                 className={`relative max-w-4xl w-full rounded-lg overflow-hidden shadow-xl ${
                     isDark ? 'bg-[#1a1a1a]' : 'bg-white'
                 } p-4 animate-modalEntry transform-gpu`}
-                onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                onClick={e => e.stopPropagation()}
             >
                 <button
                     onClick={onClose}
@@ -71,7 +70,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, projectName, details, de
 
                 <div className="relative w-full h-[50vh]">
                     <Carousel 
-                        images={projectDetails.imageSrc} 
+                        images={projectDetails.imageSrc || []} 
                         projectName={projectName} 
                     />
                 </div>
@@ -86,15 +85,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, projectName, details, de
                                 ? 'bg-[#2d2d2d] text-gray-300' 
                                 : 'bg-gray-100 text-gray-600'
                         }`}>
-                            Web Development
+                            {tags}
                         </span>
                     </div>
                     <div className={`mt-2 text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                         {projectDetails.description && (
                             <p>{projectDetails.description}</p>
-                        )}
-                        {description && !projectDetails.description && (
-                            <p>{description}</p>
                         )}
                         {projectDetails.languages && (
                             <div className="flex flex-wrap gap-2 mt-3">

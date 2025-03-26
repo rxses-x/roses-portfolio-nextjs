@@ -6,15 +6,24 @@ import Modal from '../Modal';
 
 interface WorkCardProps {
     name: string;
-    description: string;
-    logo: string;
-    details?: any;
+    tags: string;
+    logo: string | null;
+    details: {
+        imageSrc?: string[];
+        tags?: string;
+        languages?: string[];
+        url?: string;
+        urlSrc?: string;
+        [key: string]: any;
+    };
 }
 
-const WorkCard: React.FC<WorkCardProps> = ({ name, description, logo, details }) => {
+const WorkCard: React.FC<WorkCardProps> = ({ name, tags, logo, details }) => {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    console.log("WorkCard", name, tags, logo, details);
 
     return (
         <>
@@ -31,19 +40,19 @@ const WorkCard: React.FC<WorkCardProps> = ({ name, description, logo, details })
                     {name}
                 </h2>
                 <h2 className={`text-xl ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                    {description}
+                    {tags}
                 </h2>
             </div>
 
             <Modal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
+                tags={tags}
                 details={details}
                 projectName={name}
-                description={description}
             />
         </>
     );
 };
 
-export default WorkCard; 
+export default WorkCard;

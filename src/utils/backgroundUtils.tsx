@@ -4,10 +4,12 @@ export const colors = [
     'lime', 'green', 'emerald', 'teal',
     'cyan', 'sky', 'blue', 'indigo',
     'violet', 'purple', 'fuchsia', 'pink'
-];
+] as const;
+
+export type ColorName = typeof colors[number];
 
 // Color mapping for RGB values
-export const colorToRGB = {
+export const colorToRGB: Record<ColorName, [string, string]> = {
     rose: ['255,99,132', '255,71,87'],
     orange: ['255,159,64', '255,127,80'],
     amber: ['255,193,7', '255,179,0'],
@@ -26,13 +28,17 @@ export const colorToRGB = {
     pink: ['233,30,99', '216,27,96']
 };
 
+interface GradientStyle {
+    background: string;
+}
+
 /**
  * Generates a random gradient style based on the color palette
  * @param {boolean} isDark - Whether dark mode is enabled
  * @returns {Object} Style object containing the gradient background
  */
-export const generateRandomGradient = (isDark) => {
-    const getRandomColor = () => {
+export const generateRandomGradient = (isDark: boolean): GradientStyle => {
+    const getRandomColor = (): ColorName => {
         const randomIndex = Math.floor(Math.random() * colors.length);
         return colors[randomIndex];
     };

@@ -2,18 +2,19 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import data from '../data/portfolio.json';
 import { useRef, RefObject } from 'react';
-import GradientCircles from '@/components/GradientCircles';
-import Header from '@/components/Header';
-import TagLinesSection from '@/components/TagLinesSection';
-import Socials from '@/components/Socials';
-import Works from '@/components/Works';
-import About from '@/components/About';
-import Footer from '@/components/Footer';
+import GradientCircles from '../components/GradientCircles';
+import Header from '../components/Header';
+import TagLinesSection from '../components/TagLinesSection';
+import Socials from '../components/Socials';
+import Works from '../components/Works';
+import About from '../components/About';
+import Footer from '../components/Footer';
 
 interface SectionRefs {
-    about: RefObject<HTMLDivElement>;
-    work: RefObject<HTMLDivElement>;
-    contact: RefObject<HTMLDivElement>;
+    about: RefObject<HTMLDivElement | null>;
+    work: RefObject<HTMLDivElement | null>;
+    contact: RefObject<HTMLDivElement | null>;
+    [key: string]: RefObject<HTMLDivElement | null> | undefined;
 }
 
 function Home() {
@@ -27,10 +28,10 @@ function Home() {
         contact: contactRef
     };
 
-    const handleScroll = (section: keyof SectionRefs) => {
-        if (!sectionRefs[section] || !sectionRefs[section].current) return;
+    const handleScroll = (section: string) => {
+        if (!sectionRefs[section] || !sectionRefs[section]?.current) return;
         window.scrollTo({
-            top: sectionRefs[section].current.offsetTop,
+            top: sectionRefs[section]!.current!.offsetTop,
             left: 0,
             behavior: 'smooth'
         });

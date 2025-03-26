@@ -1,22 +1,23 @@
-import React, { forwardRef, RefObject } from "react";
+import { forwardRef, ForwardedRef } from "react";
 import WorkCards from "../WorkCards";
 
 interface Project {
-    id: string | number;
-    title: string;
-    description: string;
-    logo: string;
-    details?: any;
-    visible: boolean;
+  id: string;
+  title: string;
+  tags: string;
+  logo: string | null;
+  visible: boolean;
+  details: Record<string, any>;
 }
 
 interface WorksProps {
-    data: {
-        projects: Project[];
-    };
+  data: {
+    projects: Project[];
+    [key: string]: any;
+  };
 }
 
-const Works = forwardRef<HTMLElement, WorksProps>(({ data }, ref) => {
+const Works = forwardRef<HTMLDivElement, WorksProps>(({ data }, ref) => {
     return (
         <section ref={ref} className="mt-10 laptop:mt-30">
             <h2 className="text-2xl text-bold">Works.</h2>
@@ -26,16 +27,16 @@ const Works = forwardRef<HTMLElement, WorksProps>(({ data }, ref) => {
                     <WorkCards
                         key={project.id}
                         name={project.title}
-                        description={project.description}
+                        tags={project.tags}
                         logo={project.logo}
                         details={project.details}
                     />
                 ))}
             </div>
         </section>
-    );
-});
+    )
+})
 
 Works.displayName = 'Works';
 
-export default Works; 
+export default Works;

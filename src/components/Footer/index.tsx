@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, FormEvent, ChangeEvent, RefObject } from 'react';
+import React, { useState, useEffect, useRef, forwardRef, ForwardedRef } from 'react';
 import Button from '../Button';
 import Socials from '../Socials';
 import Link from 'next/link';
@@ -8,12 +8,26 @@ import dataPortfolio from '../../data/portfolio.json';
 import emailjs from '@emailjs/browser';
 
 interface FooterProps {
-    data?: any;
-    ref?: RefObject<HTMLElement>;
+  data: {
+    socials: {
+      name: string;
+      url: string;
+    }[];
+    [key: string]: any;
+  };
 }
 
-const Footer: React.FC<FooterProps> = ({ data, ref }) => {
-    const portfolioData = data && data.length > 0 ? data : dataPortfolio;
+interface FormElements extends HTMLFormControlsCollection {
+  email: HTMLInputElement;
+  message: HTMLTextAreaElement;
+}
+
+interface EmailForm extends HTMLFormElement {
+  readonly elements: FormElements;
+}
+
+const Footer = forwardRef<HTMLDivElement, FooterProps>(({ data }, ref) => {
+    const finalData = data || dataPortfolio;
     const { theme } = useTheme();
     const [email, setEmail] = useState<string>('');
     const [message, setMessage] = useState<string>('');
@@ -39,12 +53,12 @@ const Footer: React.FC<FooterProps> = ({ data, ref }) => {
         }
     }, [message]);
 
-    const handleReset = (): void => {
+    const handleReset = () => {
         setEmail('');
         setMessage('');
     };
 
-    const handleSubmit = async (e: FormEvent): Promise<void> => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!isEmailValid || !message) return;
 
@@ -71,7 +85,7 @@ const Footer: React.FC<FooterProps> = ({ data, ref }) => {
 
     return (
         <>
-            <footer className='mt-5 laptop:mt-40 p-2 laptop:p-0' ref={ref as RefObject<HTMLElement>}>
+            <footer className='mt-5 laptop:mt-40 p-2 laptop:p-0' ref={ref}>
                 <div>
                     <h2 className='text-2xl text-bold'>Contact.</h2>
                     <div className="mt-10">
@@ -87,7 +101,7 @@ const Footer: React.FC<FooterProps> = ({ data, ref }) => {
                                     type="email"
                                     name="email"
                                     value={email}
-                                    onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     placeholder="Enter your email"
                                     className="px-4 py-2 text-lg border-2 rounded-lg focus:outline-none w-full border-gray-300"
                                     required
@@ -99,20 +113,20 @@ const Footer: React.FC<FooterProps> = ({ data, ref }) => {
                                     ref={textareaRef}
                                     name="message"
                                     value={message}
-                                    onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setMessage(e.target.value)}
+                                    onChange={(e) => setMessage(e.target.value)}
                                     placeholder="Enter your message"
                                     className="mt-4 px-4 py-2 text-lg border-2 rounded-lg focus:outline-none w-full border-gray-300 min-h-[100px] overflow-hidden"
                                     required
                                 />
                                 
                                 <div className={`flex gap-4 mt-4 transition-all duration-300 ease-in-out ${email && isEmailValid && message ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
-                                    <Button onClick={handleReset} type="primary" classes="!bg-red-500 transition-colors !hover:bg-red-600">Cancel</Button>
+                                    <Button onClick={handleReset} type="primary">Cancel</Button>
                                     <Button onClick={handleSubmit} type="primary">{loading ? 'Sending...' : 'Send email'}</Button>
                                 </div>
                             </div>
                         </form>
                         <div className="mt-10">
-                            <Socials data={portfolioData.socials} />
+                            <Socials className="socials-footer" data={finalData.socials} />
                         </div>
                     </div>
                 </div>
@@ -142,7 +156,9 @@ const Footer: React.FC<FooterProps> = ({ data, ref }) => {
                 </div>
             </footer>
         </>
-    );
-};
+    )
+});
 
-export default Footer; 
+Footer.displayName = 'Footer';
+
+export default Footer;
