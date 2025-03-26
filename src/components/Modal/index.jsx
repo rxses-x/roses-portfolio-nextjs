@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import Carousel from '../Carousel';
 
-const Modal = ({ isOpen, onClose, projectName, details }) => {
+const Modal = ({ isOpen, onClose, projectName, tags, details }) => {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
 
@@ -70,7 +70,7 @@ const Modal = ({ isOpen, onClose, projectName, details }) => {
                                 ? 'bg-[#2d2d2d] text-gray-300' 
                                 : 'bg-gray-100 text-gray-600'
                         }`}>
-                            Web Development
+                            {tags}
                         </span>
                     </div>
                     <div className={`mt-2 text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>

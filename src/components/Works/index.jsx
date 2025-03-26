@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import WorkCards from "../WorkCards";
+import WorkCards from "@/components/WorkCards";
 
 const Works = forwardRef(({ data }, ref) => {
     return (
@@ -11,7 +11,7 @@ const Works = forwardRef(({ data }, ref) => {
                     <WorkCards
                         key={project.id}
                         name={project.title}
-                        description={project.description}
+                        tags={project.tags}
                         logo={project.logo}
                         details={project.details}
                     />

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import ProjectLogo from '../ProjectLogo';
-import Modal from '../Modal';
+import ProjectLogo from '@/components/ProjectLogo';
+import Modal from '@/components/Modal';
 
-const WorkCard = ({ name, description, logo, details }) => {
+const WorkCard = ({ name, tags, logo, details }) => {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,16 +24,16 @@ const WorkCard = ({ name, description, logo, details }) => {
                     {name}
                 </h2>
                 <h2 className={`text-xl ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                    {description}
+                    {tags}
                 </h2>
             </div>
 
             <Modal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
+                tags={tags}
                 details={details}
                 projectName={name}
-                description={description}
             />
         </>
     );
