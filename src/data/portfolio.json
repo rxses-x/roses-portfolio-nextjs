@@ -23,34 +23,35 @@
     {
       "id": "1",
       "title": "Riding Cities",
-      "description": "Web Development",
+      "tags": "Web Development",
       "logo": null,
       "visible": true,
       "details": {
         "imageSrc": ["/images/work/riding-cities.png", "/images/work/riding-cities-2.png", "/images/work/riding-cities-3.png"],
         "description": "A website for a skateboarding association.",
         "url": "https://rxses-x.github.io/riding-cities/",
-        "urlSrc": "https://github.com/rxses-x/riding-cities"
+        "urlSrc": "https://github.com/rxses-x/riding-cities",
+        "languages": ["HTML", "CSS"]
       }
     },
     {
       "id": "2",
       "title": "Booki",
-      "description": "Web Development",
+      "tags": "Web Development",
       "logo": "/images/logos/booki-logo.svg",
       "visible": true,
       "details": {
-        "imageSrc": ["/images/work/booki.png", "/images/work/booki.png", "/images/work/booki.png", "/images/work/booki.png", "/images/work/booki.png"],
-        "description": "An accommodation and activity booking platform.",
-        "url": "https://rxses-x.github.io/bookie/",
-        "urlSrc": "https://github.com/rxses-x/bookie",
+        "imageSrc": ["/images/work/booki.png", "/images/work/booki-2.png"],
+        "description": "A website that helps users find accommodations and activities in their chosen city.",
+        "url": "https://rxses-x.github.io/rxses-x--bookie/",
+        "urlSrc": "https://github.com/rxses-x/rxses-x--bookie",
         "languages": ["HTML", "CSS"]
       }
     },
     {
       "id": "3",
       "title": "Ohmyfood",
-      "description": "Web Development",
+      "tags": "Web Development",
       "logo": "/images/logos/ohmyfood-logo.svg",
       "visible": true,
       "details": {
@@ -64,7 +65,7 @@
     {
       "id": "4",
       "title": "Print it",
-      "description": "Web Development",
+      "tags": "Web Development",
       "logo": null,
       "visible": true,
       "details": {
@@ -78,7 +79,7 @@
     {
       "id": "5",
       "title": "Sophie Bluel",
-      "description": "Web Development",
+      "tags": "Web Development",
       "logo": "/images/logos/sophie-bluel-logo.svg",
       "visible": false,
       "details": {
@@ -91,7 +92,7 @@
     {
       "id": "6",
       "title": "Kasa",
-      "description": "Web Development",
+      "tags": "Web Development",
       "logo": "/images/logos/kasa-logo.svg",
       "visible": true,
       "details": {
@@ -105,7 +106,7 @@
     {
       "id": "7",
       "title": "Nina Carducci",
-      "description": "Web Development",
+      "tags": "Web Development",
       "logo": "/images/logos/nina-carducci-logo.svg",
       "visible": false,
       "details": {
@@ -117,7 +118,7 @@
     {
       "id": "8",
       "title": "724events",
-      "description": "Web Development",
+      "tags": "Web Development",
       "logo": "/images/logos/724events-logo.svg",
       "visible": false,
       "details": {
@@ -131,7 +132,7 @@
     {
       "id": "9",
       "title": "Argent Bank",
-      "description": "Web Development",
+      "tags": "Web Development",
       "logo": "/images/logos/argent-bank-logo.svg",
       "visible": false,
       "details": {
@@ -145,7 +146,7 @@
     {
       "id": "10",
       "title": "Menu Maker",
-      "description": "Web Development",
+      "tags": "Web Development",
       "logo": "/images/logos/menu-maker-logo.svg",
       "visible": false,
       "details": {
