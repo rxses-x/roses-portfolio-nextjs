@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import data from '@/data/portfolio';
+import data from '../data/portfolio.json';
 import { useRef, RefObject } from 'react';
 import GradientCircles from '@/components/GradientCircles';
 import Header from '@/components/Header';

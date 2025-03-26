@@ -49,7 +49,7 @@ const TagLinesSection: React.FC<TagLinesSectionProps> = ({ data }) => {
                 variants={item}
                 className='text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5'
             >
-                "Hello 👋"
+                &quot;Hello 👋&quot;
             </motion.h1>
             {data.map((tagLines, index) => (
                 <motion.h2

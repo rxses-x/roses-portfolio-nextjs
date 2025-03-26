@@ -4,7 +4,7 @@ import Socials from '../Socials';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import dataPortfolio from '@/data/portfolio.json';
+import dataPortfolio from '../../data/portfolio.json';
 import emailjs from '@emailjs/browser';
 
 interface FooterProps {

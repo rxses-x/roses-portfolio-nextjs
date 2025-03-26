@@ -5,7 +5,7 @@ import React, { ReactNode } from "react";
 interface ButtonProps {
   children: ReactNode;
   type?: "primary" | string;
-  onClick?: () => void;
+  onClick?: (...args: any[]) => void;
   classes?: string;
 }
 

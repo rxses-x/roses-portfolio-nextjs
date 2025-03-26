@@ -18,17 +18,14 @@ const Header: React.FC<HeaderProps> = ({ handleScroll, data }) => {
     const router = useRouter();
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
-    const isDark = theme === 'dark'
-
-    if (!data) return null;
+    const isDark = theme === 'dark';
 
     useEffect(() => {
         setMounted(true);
     }, []);
 
-    if (!mounted) {
-        return null;
-    }
+    if (!data) return null;
+    if (!mounted) return null;
 
     return (
         <>
