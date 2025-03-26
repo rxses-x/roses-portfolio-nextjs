@@ -194,6 +194,10 @@
       {
         "name": "CSS3",
         "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+      },
+      {
+        "name": "TypeScript",
+        "url": "https://www.typescriptlang.org/"
       }
     ],
     "frameworks": [
